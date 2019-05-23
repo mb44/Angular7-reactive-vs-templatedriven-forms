@@ -1,0 +1,32 @@
+<!-- Template driven form -->
+<h3>Template driven form</h3>
+<form #myForm="ngForm" (ngSubmit)="onSubmit()">
+  <div class="form-group">
+    <label for="username">Username</label>
+    <input type="text" class="form-control" #usernameField="ngModel" name="username" required [(ngModel)]="username" placeholder="Username...">
+      <label [hidden]="usernameField.valid || !usernameField.touched" class="text-danger">You must supply a username</label>
+  </div>
+  <div class="checkbox">
+    <label>
+      <input type="checkbox" name="checkout" [(ngModel)]="checkout"> Check me out
+    </label>
+  </div>
+  <button type="submit" class="btn btn-default" [disabled]="!myForm.form.valid">Submit</button>
+</form>
+
+<!-- Reactive form -->
+<h3>Reactive form</h3>
+<form [formGroup]="fg">
+  <div class="form-group">
+    <label for="username2">Username</label>
+    <input type="text" class="form-control" id="username2" name="username2" formControlName="username2"
+      placeholder="Username...">
+      <label [hidden]="this.fg.value.username2" class="text-danger">You must supply a username</label>
+  </div>
+  <div class="checkbox">
+    <label>
+      <input type="checkbox" name="checkout2" formControlName="checkout2"> Check me out
+    </label>
+  </div>
+  <button type="submit" class="btn btn-default" (click)="onSubmit2()" [disabled]="!this.fg.valid">Submit</button>
+</form>
