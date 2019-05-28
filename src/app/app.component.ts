@@ -7,7 +7,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  // Template drive form
+  // Template driven form
   public username = "";
   public checkout = true;
 
